@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT
+{% endblock %}
+
+{% block body %}
+{% for contenu in app.session.getflashbag.get('enregistrement.succes') %}
+        <div class=" text-center alert alert-success" role="alert">
+
+            <div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">  <span aria-hidden="true">&times;
+            </span>  </button><span style="font-size:18px"> {{ contenu}} </span></div>
+
+        </div>
+    {% endfor %}
+    
+ <div class="row">
+  <div class="col-lg-8">
+    <h1>Enrégistrement</h1>
+    </div>
+     <div class="col-lg-3">
+     </div>
+    
+    </div>
+            <br/><br/>
+            {% set formErrors = registrationForm.vars.errors.form.getErrors(true) %}
+    {% if formErrors|length %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in formErrors %}
+                    <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+            {% endif %}
+	{{ form_start(registrationForm) }}
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" style="width: 160px;" id="basic-addon1">Nom d'utilisateur</span>
+		</div>
+		{{ form_widget(registrationForm.username,{'attr': {'class':'form-control input-mask'}}) }}
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<span class="input-group-text" style="width: 160px;" id="basic-addon1">Mot de passe</span>
+		</div>
+		{{ form_widget(registrationForm.plainPassword,{'attr': {'class':'form-control input-mask'}}) }}
+
+	</div>
+	<div class="col-md-4 col-xs-4 col-sm-4">
+		<button id="envoi" type="submit" class="btn btn-success">Enrégistrer</button>
+		<button type="reset" class="btn btn-danger">Annuler</button>
+	</div>
+	{{ form_end(registrationForm) }}
+     </div>
+{% endblock %}
+{% block javascripts %}
+  {{parent()}}
+<script>
+    window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 6000);
+        } );
+
+</script>
+ {% endblock %}

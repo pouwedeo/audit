@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+       <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Nom</span>
+  </div>
+       {{ form_widget(form.nom,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.nom) }}
+  </div>
+   {# <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Entreprise</span>
+  </div>
+       {{ form_widget(form.entreprise,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.entreprise) }}
+  </div> #}
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text"  style="width: 160px;" id="basic-addon1">Responsable</span>
+  </div>
+       {{ form_widget(form.personnel,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.personnel) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Date création</span>
+  </div>
+       {{ form_widget(form.datecreation,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.datecreation) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Objectif</span>
+  </div>
+       {{ form_widget(form.objectif,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.objectif) }}
+  </div>
+   
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

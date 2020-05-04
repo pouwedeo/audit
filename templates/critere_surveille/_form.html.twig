@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Critère</span>
+  </div>
+       {{ form_widget(form.critere,{'attr': {'class':'form-control input-mask','id':'crit'}}) }}
+       {{ form_errors(form.critere) }}
+  </div>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button id="envoi" type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}
+

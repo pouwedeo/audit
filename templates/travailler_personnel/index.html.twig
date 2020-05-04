@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT{% endblock %}
+{% block menu %}
+  	<li class="nav-header">Gestion de l'entreprise</li>
+
+				<li class="nav-item">
+        <a class="nav-link" href="{{path('personnel_index',{'id': id})}}">
+          <i class="fas fa-fw fa-hands-helping"></i>
+          <p>Personnel</p></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('equipe_index',{'id': id})}}">
+          <i class="fas fa-fw fa-people-carry"></i>
+          <p>Equipe</p></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('travailler_personnel_index',{'id': id})}}">
+           <i class="fas fa-fw fa-hands-helping"></i>
+          <p>Participation</p></a>
+      </li>
+      <li class="nav-header">
+        Gestion de la production
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('produir_index',{'id': id})}}">
+          <i class="fas fa-fw fa-product-hunt"></i>
+          <p>Production</p></a>
+      </li>
+      <li class="nav-header">
+        Gestion des etapes
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('etape_index',{'id': id})}}">
+          <i class="fas fa-fw fa-step-forward"></i>
+          <p>Etape</p></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('matiere_utiliser_index',{'id': id})}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <p> Intrant par etape </p></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('identificationccp_danger_index',{'id': id})}}">
+          <i class="fas fa-fw fa-table"></i>
+          <p> Identification des ccp et danger </p></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('systeme_surveillance_index',{'id': id})}}">
+          <i class="fas fa-fw fa-hand-paper"></i>
+          <p> Système de surveillance </p></a>
+      </li>
+     
+ {% endblock %}
+ {% block entete %}
+ 		<form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" readonly="readonly" placeholder="Entreprise  &nbsp;{{entreprise|upper}}" aria-label="Search" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="button">
+            <a href="{{path('inter_liste', {'id':id })}}" style="color: white;"><i class="fas fa-home fa-sm"></i></a>
+					</button>
+				</div>
+			</div>
+		</form>
+{% endblock %}
+{% block body %}
+    <div class="row">
+  <div class="col-lg-8">
+    <h1>Liste du personnel par équipe </h1>
+    </div>
+     <div class="col-lg-3">
+     </div>
+      <div class="col-lg-1">
+        <a href="{{ path('travailler_personnel_new', {'id':id }) }}" title="Nouveau travaille " class="btn btn-success btn-circle">
+          <i class="fas fa-check"></i>
+        </a>
+      </div>
+    </div>
+           <br/><br/>
+<div class="row">
+			<div class="col-lg-9"></div>
+			<div class="col-lg-3">
+				<div class="btn-group pull-right">
+					<button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-bars"></i>
+						Exporter les données</button>
+					<ul class="dropdown-menu">
+					
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'txt',escape:'false'});"><img src="{{asset('style/icons/txt.png')}}" width="24"/>
+								TXT</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'excel',escape:'false'});"><img src="{{asset('style/icons/xls.png')}}" width="24"/>
+								XLS</a>
+						</li>
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'doc',escape:'false'});"><img src="{{asset('style/icons/word.png')}}" width="24"/>
+								Word</a>
+						</li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+	</br>
+     <div class="table-responsive">
+     <table class="table table-bordered" id="example1" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Equipe</th>
+                <th>Personnel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for travailler_personnel in travailler_personnels %}
+            <tr>
+                <td>{{ travailler_personnel.equipe.nom }}</td>
+                <td>{{ travailler_personnel.personnel.conteneure }}</td>
+
+                <td>
+                 <a href="{{ path('travailler_personnel_edit', {'id': travailler_personnel.id, 'ide':id}) }}" title="Modifier" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pencil-alt"></i> </a>
+                 <a href="{{ path('travailler_personnel_delete', {'id': travailler_personnel.id, 'ide':id}) }}" title="Supprimer" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i> </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune donnée trouvé</td>
+            </tr>
+        {% endfor %}
+         </tbody>
+    </table>
+ </div>
+{% endblock %}
+{% block javascripts %}
+	{{parent()}}
+
+	<script src="{{asset('style/tableexport/tableExport.js')}}"></script>
+	<script src="{{asset('style/tableexport/jquery.base64.js')}}"></script>
+	<script src="{{asset('style/tableexport/html2canvas.js')}}"></script>
+	<script src="{{asset('style/tableexport/jspdf/libs/sprintf.js')}}"></script>
+	<script src="{{asset('style/tableexport/jspdf/jspdf.js')}}"></script>
+
+ <script src="{{asset('style/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('style/plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+
+	
+	<script>
+ 		$(document).ready(function () {
+$('#example1').DataTable({
+	"paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+"language": {
+"sProcessing": "Traitement en cours ...",
+"sLengthMenu": "Afficher _MENU_ lignes",
+"sZeroRecords": "Aucun résultat trouvé",
+"sEmptyTable": "Aucune donnée disponible",
+"sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+"sInfoEmpty": "Aucune ligne affichée",
+"sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+"sInfoPostFix": "",
+"sSearch": "Chercher:",
+"sUrl": "",
+"sInfoThousands": ",",
+"sLoadingRecords": "Chargement...",
+"oPaginate": {
+"sFirst": "Premier",
+"sLast": "Dernier",
+"sNext": "Suivant",
+"sPrevious": "Précédent"
+},
+"oAria": {
+"sSortAscending": ": Trier par ordre croissant",
+"sSortDescending": ": Trier par ordre décroissant"
+}
+}
+});
+});
+
+</script>
+	
+	{% endblock %}

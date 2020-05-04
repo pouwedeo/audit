@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+     <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Nom</span>
+  </div>
+       {{ form_widget(form.nom,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.nom) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Description</span>
+  </div>
+       {{ form_widget(form.description,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.description) }}
+  </div>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

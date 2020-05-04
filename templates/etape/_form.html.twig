@@ -1,0 +1,54 @@
+{{ form_start(form) }}
+      <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" id="basic-addon1">Nom</span>
+  </div>
+       {{ form_widget(form.nom,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.nom) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" >Niveau</span>
+  </div>
+       {{ form_widget(form.niveau,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.niveau) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" id="basic-addon1">Description</span>
+  </div>
+       {{ form_widget(form.description,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.description) }}
+  </div>
+  
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" id="basic-addon1">Produit</span>
+  </div>
+       {{ form_widget(form.produit,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.produit) }}
+  </div>
+ 
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" id="basic-addon1">élément de sortie</span>
+  </div>
+       {{ form_widget(form.elementsortie,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.elementsortie) }}
+  </div>
+    <div class="input-group mb-3">
+   <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;" id="basic-addon1">Image du produit obtenu</span>
+  </div>
+  <div class="custom-file">
+       {{ form_widget(form.imageproduitobtenu,{'attr': {'placeholder': 'Select an article image'}}) }}
+       {{ form_errors(form.imageproduitobtenu) }}
+      <label class="custom-file-label" for="personnel_photo">Choisir une photo</label>
+  </div>
+
+  </div>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

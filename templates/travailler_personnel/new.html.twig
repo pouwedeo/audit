@@ -1,0 +1,213 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT
+{% endblock %}
+
+{% block menu %}
+	<li class="nav-header">Gestion de l'entreprise</li>
+
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('personnel_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hands-helping"></i>
+			<p>Personnel</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('equipe_index',{'id': id})}}">
+			<i class="fas fa-fw fa-people-carry"></i>
+			<p>Equipe</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('travailler_personnel_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hands-helping"></i>
+			<p>Participation</p>
+		</a>
+	</li>
+	<li class="nav-header">
+		Gestion de la production
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('produir_index',{'id': id})}}">
+			<i class="fas fa-fw fa-product-hunt"></i>
+			<p>Production</p>
+		</a>
+	</li>
+	<li class="nav-header">
+		Gestion des etapes
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('etape_index',{'id': id})}}">
+			<i class="fas fa-fw fa-step-forward"></i>
+			<p>Etape</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('matiere_utiliser_index',{'id': id})}}">
+			<i class="fas fa-fw fa-cog"></i>
+			<p>
+				Intrant par etape
+			</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('identificationccp_danger_index',{'id': id})}}">
+			<i class="fas fa-fw fa-table"></i>
+			<p>
+				Identification des ccp et danger
+			</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('systeme_surveillance_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hand-paper"></i>
+			<p>
+				Système de surveillance
+			</p>
+		</a>
+	</li>
+
+{% endblock %}
+{% block entete %}
+	<form class="form-inline ml-3">
+		<div class="input-group input-group-sm">
+			<input class="form-control form-control-navbar" readonly="readonly" placeholder="Entreprise  &nbsp;{{entreprise|upper}}" aria-label="Search" aria-describedby="basic-addon2">
+			<div class="input-group-append">
+				<button class="btn btn-success" type="button">
+					<a href="{{path('inter_liste', {'id':id })}}" style="color: white;">
+						<i class="fas fa-home fa-sm"></i>
+					</a>
+				</button>
+			</div>
+		</div>
+	</form>
+
+{% endblock %}
+{% block body %}
+	{% for contenu in app.session.getflashbag.get('travailler_personnel.succes') %}
+		<div class=" text-center alert alert-success" role="alert">
+
+			<div>
+				<button type="button" class="close" data-dismiss="alert" aria-label="close">
+					<span aria-hidden="true">&times;
+					</span>
+				</button>
+				<span style="font-size:18px">
+					{{ contenu}}
+				</span>
+			</div>
+
+		</div>
+	{% endfor %}
+	{% for contenu in app.session.getflashbag.get('travailler_personnel.erreur') %}
+		<div class=" text-center alert alert-danger" role="alert">
+
+			<div>
+				<button type="button" class="close" data-dismiss="alert" aria-label="close">
+					<span aria-hidden="true">&times;
+					</span>
+				</button>
+				<span style="font-size:18px">
+					{{ contenu}}
+				</span>
+			</div>
+
+		</div>
+	{% endfor %}
+
+	{% for contenu in app.session.getflashbag.get('travail.erreur') %}
+		<div class=" text-center alert alert-danger" role="alert">
+
+			<div>
+				<button type="button" class="close" data-dismiss="alert" aria-label="close">
+					<span aria-hidden="true">&times;
+					</span>
+				</button>
+				<span style="font-size:18px">
+					{{ contenu}}
+				</span>
+			</div>
+
+		</div>
+	{% endfor %}
+	<div class="row">
+		<div class="col-lg-10">
+			<h1>Nouveau groupe de personne par équipe</h1>
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1">
+			<a href="{{ path('travailler_personnel_index',{'id':id }) }}" data-toggle="tooltip" data-placement="top" title="Liste des personnes par équipe" class="btn btn-success btn-circle">
+				<i class="fas fa-clipboard-list"></i>
+			</a>
+		</div>
+	</div>
+	<br/><br/>
+	<form name="travailler" action="{{ path('travailler_personnel_new',{'id':id }) }}" method="post">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<label class="input-group-text" style="width: 170px;" id="basic-addon1">Equipe</label>
+			</div>
+			<select class="custom-select" name="equipe" id="equipe" style="left: -16px;">
+				<option selected>Choisir...</option>
+				{% for equipe in equipes %}
+					<option  value="{{equipe.id}}">{{equipe.nom}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="form-group">
+			<div class="row">
+
+				<div class="col-lg-2">
+
+					<label class="input-group-text" id="basic-addon1" style="">Personnel</label>
+				</div>
+				<div class="col-lg-10" style="left: -16px;">
+
+					<select class="form-control select2" multiple="multiple" name="role[]" id="personnel"  data-placeholder="Choisir...">
+						
+						{% for personnel in personnels %}
+							<option value="{{personnel.id}}">{{personnel.conteneure}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div class="col-md-4 col-xs-4 col-sm-4">
+			<button type="submit" class="btn btn-success">Enrégistrer</button>
+			<button type="reset" class="btn btn-danger">Annuler</button>
+		</div>
+	</form>
+	{# 	  {{ include('travailler_personnel/_form.html.twig') }}  	
+		 #}
+{% endblock %}
+{% block javascripts %}
+	{{parent()}}
+	<script>
+		window.setTimeout(function () {
+$(".alert").fadeTo(500, 0).slideUp(500, function () {
+$(this).remove();
+});
+}, 6000);
+	</script>
+	<script>
+		{
+# $('#personnel').change(function (e) {
+
+var valeur = $('#personnel').val();
+
+$('#input').append('<div><input name="' + valeur + '" readonly="readonly" placeholder="' + valeur + '"/><span class="remove_field">&times;</span></div>');
+$('#input').show();
+});
+$('.remove_field').click(function () {
+$(this).parent('div').remove();
+})#
+}
+	</script>
+	{# var input="<input type='hidden' />";
+			var valeur=$('#personnel').val();
+			input.name(valeur);
+			input.id('personnel'+valeur);
+			$('#input').append(input) #}
+{% endblock %}

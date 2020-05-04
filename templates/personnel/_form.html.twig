@@ -1,0 +1,73 @@
+{{ form_start(form) }}
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Nom</span>
+  </div>
+       {{ form_widget(form.nom,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.nom) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Prénom</span>
+  </div>
+       {{ form_widget(form.prenom,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.prenom) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Sexe</span>
+  </div>
+       {{ form_widget(form.sexe,{'attr': {'class':'form-control select-mask'}}) }}
+       {{ form_errors(form.sexe) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Téléphone</span>
+  </div>
+       {{ form_widget(form.telephone,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.telephone) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Email</span>
+  </div>
+       {{ form_widget(form.email,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.email) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Adresse</span>
+  </div>
+       {{ form_widget(form.adresse,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.adresse) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Photo</span>
+  </div>
+  <div class="custom-file">
+       {{ form_widget(form.photo,{'attr': {'placeholder': 'Select an article image'}}) }}
+       {{ form_errors(form.photo) }}
+    <label class="custom-file-label" for="personnel_photo">Choisir une photo</label>
+ 
+  </div>
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Poste</span>
+  </div>
+       {{ form_widget(form.poste,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.poste) }}
+  </div>
+  {# <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Entreprise</span>
+  </div>
+       {{ form_widget(form.entreprise,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.entreprise) }}
+  </div> #}
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

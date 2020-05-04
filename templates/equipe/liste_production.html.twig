@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT
+{% endblock %}
+{% block menu %}
+  <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Gestion de l'entreprise
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('personnel_index',{'id': id})}}">
+          <i class="fas fa-fw fa-hands-helping"></i>
+          <span>Personnel</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('equipe_index',{'id': id})}}">
+          <i class="fas fa-fw fa-people-carry"></i>
+          <span>Equipe</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('selection_liste',{'id': id})}}">
+           <i class="fas fa-fw fa-hands-helping"></i>
+          <span>Participation</span></a>
+      </li>
+        <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Gestion de la production
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('selectionproduit_liste',{'id': id})}}">
+          <i class="fas fa-fw fa-product-hunt"></i>
+          <span>Produiction</span></a>
+      </li>
+       <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Gestion des etapes
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('etape_index',{'id': id})}}">
+          <i class="fas fa-fw fa-step-forward"></i>
+          <span>Etape</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{path('matiere_utiliser_index',{'id': id})}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span> Intrant par etape </span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('identificationccp_danger_index',{'id': id})}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span> Identification des ccp et danger </span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{{path('systeme_surveillance_index',{'id': id})}}">
+          <i class="fas fa-fw fa-hand-paper"></i>
+          <span> Système de surveillance </span></a>
+      </li>
+     <hr class="sidebar-divider d-none d-md-block">
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+ {% endblock %}
+  {% block entete %}
+
+<div class="row">
+			<div class="col-lg-5">
+				<p style="color: red;font-style: italic;font-size:15px; font-weight:bold;"><a href="{{path('inter_liste', {'id':id })}}" style="color: red;font-style: italic;font-size:15px; font-weight:bold;">Entreprise {{entreprise|upper}}</a></p>
+			</div>
+			{# <div class="col-lg-3">
+				<p style="color: red;font-style: italic;font-size:15px;">nombre d'équipe: &nbsp;{{nombrepersonnel}}
+				</p>
+			</div> #}
+
+		</div>
+		
+	
+{% endblock %}
+{% block body %}
+	<div class="row">
+
+		{% for equipe in equipes %}
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-success  shadow h-100 py-2" style=" cursor: pointer;">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success  text-uppercase mb-1"><a href="{{path('produir_index', {'id':equipe.id })}}" style="color:#1cc88a">{{equipe.nom}}</a></div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+							</div>
+							<div class="col-auto">
+{# 								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+ #}							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
+	</div>
+{% endblock %}

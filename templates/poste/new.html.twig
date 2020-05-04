@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT{% endblock %}
+
+{% block body %}
+{% for contenu in app.session.getflashbag.get('poste.succes') %}
+        <div class=" text-center alert alert-success" role="alert">
+
+            <div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">  <span aria-hidden="true">&times;
+            </span>  </button><span style="font-size:18px"> {{ contenu}} </span></div>
+
+        </div>
+    {% endfor %}
+     {% for contenu in app.session.getflashbag.get('poste.erreur') %}
+        <div class=" text-center alert alert-danger" role="alert">
+
+            <div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="close">  <span aria-hidden="true">&times;
+            </span>  </button><span style="font-size:18px"> {{ contenu}} </span></div>
+
+        </div>
+    {% endfor %}
+    <div class="row">
+  <div class="col-lg-8">
+    <h1>Nouveau poste</h1>
+    </div>
+     <div class="col-lg-3">
+     </div>
+      <div class="col-lg-1">
+        <a href="{{ path('poste_index') }}" data-toggle="tooltip" data-placement="top" title="Liste des postes"  class="btn btn-success btn-circle">
+          <i class="fas fa-clipboard-list"></i>
+        </a>
+      </div>
+    </div>
+            <br/><br/>
+
+    {{ include('poste/_form.html.twig') }}
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+  {{parent()}}
+<script>
+    window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 6000);
+      
+
+</script>
+ {% endblock %}

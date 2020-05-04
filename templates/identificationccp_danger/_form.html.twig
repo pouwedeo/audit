@@ -1,0 +1,95 @@
+{{ form_start(form) }}
+         <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Etape</span>
+  </div>
+       {{ form_widget(form.etape,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.etape) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Description du danger</span>
+  </div>
+       {{ form_widget(form.description_danger,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.description_danger) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Cause du danger</span>
+  </div>
+       {{ form_widget(form.cause_danger,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.cause_danger) }}
+  </div>
+  
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Mesure préventive</span>
+  </div>
+       {{ form_widget(form.mesure_preventive,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.mesure_preventive) }}
+  </div>
+   <div class="input-group mb-3">
+
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Paramètre maîtriseé</span>
+  </div>
+       {{ form_widget(form.parametreMaitriser,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.parametreMaitriser) }}
+  </div>
+  
+     <div class="input-group mb-3">
+   <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Fréquence</span>
+  </div>
+       {{ form_widget(form.frequence,{'attr': {'class':'form-control textarea-mask'}}) }}
+       {{ form_errors(form.frequence) }}
+  </div>
+    <div class="input-group mb-3">
+   <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Gravité</span>
+  </div>
+       {{ form_widget(form.gravite,{'attr': {'class':'form-control textarea-mask'}}) }}
+       {{ form_errors(form.gravite) }}
+  </div>
+    <div class="input-group mb-3">
+   <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Détection</span>
+  </div>
+       {{ form_widget(form.detection,{'attr': {'class':'form-control textarea-mask'}}) }}
+       {{ form_errors(form.detection) }}
+  </div>
+  {#   <div class="input-group mb-3">
+   <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 179px;" id="basic-addon1">Risque</span>
+  </div>
+       {{ form_widget(form.risque,{'attr': {'class':'form-control textarea-mask'}}) }}
+       {{ form_errors(form.risque) }}
+  </div> #}
+  {#  <div class="input-group">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+       {{ form_widget(form.ccp,{'attr': {'class':'radio'}}) }}
+       {{ form_errors(form.ccp) }}
+   </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with radio button">
+</div> #}
+
+{# <div class="input-group">
+  <div class="input-group-prepend">
+    <div class="input-group-text" style="width: 179px;">
+      <input type="radio" aria-label="Radio button for following text input">
+    </div>
+  </div>
+       {{ form_widget(form.ccp,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.ccp) }}
+  </div> #}</br>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}
+
+<script>
+
+</script>

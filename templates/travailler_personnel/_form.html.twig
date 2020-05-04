@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+<div class="input-group mb-3">
+	<div class="input-group-prepend">
+		<span class="input-group-text" style="width: 160px;" id="basic-addon1">Equipe</span>
+	</div>
+	{{ form_widget(form.equipe,{'attr': {'class':'form-control input-mask','style':'margin-right: 16px;'}}) }}
+	{{ form_errors(form.equipe) }}
+</div>
+
+<div class="input-group mb-3">
+	<div class="input-group-prepend">
+		<span class="input-group-text" style="width: 160px;" id="basic-addon1">Personnel</span>
+	</div>
+	{{ form_widget(form.personnel,{'attr': {'class':'form-control input-mask','style':'margin-right: 16px;'}}) }}
+	{{ form_errors(form.personnel) }}
+</div>
+
+<div class="col-md-4 col-xs-4 col-sm-4">
+	<button type="submit" class="btn btn-success">Enrégistrer</button>
+	<button type="reset" class="btn btn-danger">Annuler</button>
+</div>
+{{ form_end(form) }}

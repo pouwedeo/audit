@@ -1,0 +1,76 @@
+{{ form_start(form) }}
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Etape</span>
+  </div>
+       {{ form_widget(form.etape,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.etape) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Type de problème</span>
+  </div>
+       {{ form_widget(form.typeprobleme,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.typeprobleme) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 173px;" id="basic-addon1">Critère de surveillance</span>
+  </div>
+       {{ form_widget(form.criteresurveille,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.criteresurveille) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Responsable</span>
+  </div>
+       {{ form_widget(form.personnel,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.personnel) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Limite critique</span>
+  </div>
+       {{ form_widget(form.limite_critique,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.limite_critique) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Enrégistrement</span>
+  </div>
+       {{ form_widget(form.enregistrement,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.enregistrement) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Action corrective</span>
+  </div>
+       {{ form_widget(form.action_corrective,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.action_corrective) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 173px;" id="basic-addon1">Frequence de controle</span>
+  </div>
+       {{ form_widget(form.frequence_controle,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.frequence_controle) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Vérification</span>
+  </div>
+       {{ form_widget(form.verification,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.verification) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Résultat</span>
+  </div>
+       {{ form_widget(form.resultat,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.resultat) }}
+  </div>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+      <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+ <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Etape</span>
+  </div>
+       {{ form_widget(form.etape,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.etape) }}
+  </div>
+   <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 160px;" id="basic-addon1">Matière première</span>
+  </div>
+       {{ form_widget(form.matierepremiere,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.matierepremiere) }}
+  </div>
+ 
+   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}

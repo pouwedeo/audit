@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		<div class="col-lg-5">
+			<h1>Liste des entreprises</h1>
+		</div>
+		<div class="col-lg-6"></div>
+		<div class="col-lg-1">
+			<a href="{{ path('entreprise_new') }}" title="Nouvelle entreprise" class="btn btn-success btn-circle">
+				<i class="fas fa-check"></i>
+			</a>
+		</div>
+	</div>
+	<br/><br>
+		<div class="row">
+			<div class="col-lg-9"></div>
+			<div class="col-lg-3">
+				<div class="btn-group pull-right">
+					<button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-bars"></i>
+						Exporter les données</button>
+					<ul class="dropdown-menu">
+						
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'txt',escape:'false'});"><img src="{{asset('style/icons/txt.png')}}" width="24"/>
+								TXT</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'excel',escape:'false'});"><img src="{{asset('style/icons/xls.png')}}" width="24"/>
+								XLS</a>
+						</li>
+						<li>
+							<a href="#" onclick="$('#example1').tableExport({type:'doc',escape:'false'});"><img src="{{asset('style/icons/word.png')}}" width="24"/>
+								Word</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</br>
+	<div class="table-responsive">
+     <table class="table table-bordered" id="example1" width="100%" cellspacing="0">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Objectif</th>
+					<th>Engagement</th>
+					<th>Politique</th>
+					<th>Telephone</th>
+					<th>Email</th>
+					<th>Adress</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for entreprise in entreprises %}
+					<tr>
+						<td>{{ entreprise.nom }}</td>
+						<td>{{ entreprise.objectif }}</td>
+						<td>{{ entreprise.engagement }}</td>
+						<td>{{ entreprise.politique }}</td>
+						<td>{{ entreprise.telephone }}</td>
+						<td>{{ entreprise.email }}</td>
+						<td>{{ entreprise.adress }}</td>
+						<td>
+							<a href="{{ path('entreprise_edit', {'id': entreprise.id })}}" title="Modifier" class="btn btn-info btn-circle btn-sm">
+								<i class="fas fa-pencil-alt"></i>
+							</a>
+							<a href="{{ path('entreprise_delete', {'id': entreprise.id })}}" title="Supprimer" class="btn btn-danger btn-circle btn-sm">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucune donnée trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+{% block javascripts %}
+	{{parent()}}
+
+	<script src="{{asset('style/tableexport/tableExport.js')}}"></script>
+	<script src="{{asset('style/tableexport/jquery.base64.js')}}"></script>
+	<script src="{{asset('style/tableexport/html2canvas.js')}}"></script>
+	<script src="{{asset('style/tableexport/jspdf/libs/sprintf.js')}}"></script>
+	<script src="{{asset('style/tableexport/jspdf/jspdf.js')}}"></script>
+<script src="{{asset('style/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('style/plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+
+	
+	<script>
+ 		$(document).ready(function () {
+$('#example1').DataTable({
+	"paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+"language": {
+"sProcessing": "Traitement en cours ...",
+"sLengthMenu": "Afficher _MENU_ lignes",
+"sZeroRecords": "Aucun résultat trouvé",
+"sEmptyTable": "Aucune donnée disponible",
+"sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+"sInfoEmpty": "Aucune ligne affichée",
+"sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+"sInfoPostFix": "",
+"sSearch": "Chercher:",
+"sUrl": "",
+"sInfoThousands": ",",
+"sLoadingRecords": "Chargement...",
+"oPaginate": {
+"sFirst": "Premier",
+"sLast": "Dernier",
+"sNext": "Suivant",
+"sPrevious": "Précédent"
+},
+"oAria": {
+"sSortAscending": ": Trier par ordre croissant",
+"sSortDescending": ": Trier par ordre décroissant"
+}
+}
+});
+});
+
+</script>
+	
+	{% endblock %}

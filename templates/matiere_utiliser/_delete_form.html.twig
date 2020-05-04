@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('matiere_utiliser_delete', {'id': matiere_utiliser.id}) }}" onsubmit="return confirm('êtes-vous sûr de vouloir supprimer cet intran de cette étape?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ matiere_utiliser.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>

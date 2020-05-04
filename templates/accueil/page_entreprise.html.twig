@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgroAL LvT
+{% endblock %}
+
+{% block menu %}
+	      	<li class="nav-header">Gestion de l'entreprise</li>
+
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('personnel_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hands-helping"></i>
+			<p>Personnel</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('equipe_index',{'id': id})}}">
+			<i class="fas fa-fw fa-people-carry"></i>
+			<p>Equipe</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('travailler_personnel_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hands-helping"></i>
+			<p>Participation</p>
+		</a>
+	</li>
+	 <li class="nav-header">
+        Gestion de la production
+      </li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('produir_index',{'id': id})}}">
+			<i class="fas fa-fw fa-product-hunt"></i>
+			<p>Production</p>
+		</a>
+	</li>
+	 <li class="nav-header">
+        Gestion des etapes
+      </li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('etape_index',{'id': id})}}">
+			<i class="fas fa-fw fa-step-forward"></i>
+			<p>Etape</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('matiere_utiliser_index',{'id': id})}}">
+			<i class="fas fa-fw fa-cog"></i>
+			<p>
+				Intrant par etape
+			</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('identificationccp_danger_index',{'id': id})}}">
+			<i class="fas fa-fw fa-table"></i>
+			<p>
+				Identification des ccp et danger
+			</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('systeme_surveillance_index',{'id': id})}}">
+			<i class="fas fa-fw fa-hand-paper"></i>
+			<p>
+				Système de surveillance
+			</p>
+		</a>
+	</li>
+	
+{% endblock %}
+
+{% block entete %}
+	{% for entreprisepage in entreprisepages %}
+		<form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" readonly="readonly" placeholder="Entreprise  &nbsp;{{entreprisepage.nom|upper}}" aria-label="Search" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-success" type="button">
+						<i class="fas fa-home fa-sm"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+
+	{% endfor %}
+{% endblock %}
+
+{% block body %}
+	{% for entreprisepage in entreprisepages %}
+		<div class="row">
+			<div class="col-lg-8"></div>
+			<div class="col-lg-3"></div>
+			<div class="col-lg-1">
+				<a href="{{ path('entreprise_edit', {'id': entreprisepage.id })}}" title="Modifier" class="btn btn-info btn-circle btn-sm">
+					<i class="fas fa-pencil-alt"></i>
+				</a>
+			</div>
+		</div>
+		<br/><br/>
+
+		<div class="row">
+			<div class="col-lg-3">Nom:  &nbsp;{{entreprisepage.nom}}
+			</div>
+			<div class="col-lg-3">Téléphone: &nbsp;{{entreprisepage.telephone}}
+			</div>
+			<div class="col-lg-3">Adresse: &nbsp;{{entreprisepage.adress}}
+			</div>
+			<div class="col-lg-3">Email: &nbsp;{{entreprisepage.email}}
+			</div>
+		</div>
+		<br/><br/>
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<tr>
+					<th>Objectif</th>
+					<td>{{entreprisepage.objectif}}</td>
+				</tr>
+				<tr>
+					<th>Politique</th>
+					<td>{{entreprisepage.politique}}</td>
+				</tr>
+				<tr>
+					<th>Engagement</th>
+					<td>{{entreprisepage.engagement}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<p style="color: red;font-style: italic;font-size:15px;">Nombre du personnel:  &nbsp;{{nombrepersonnel}}</p>
+			</div>
+			<div class="col-lg-3">
+				<p style="color: red;font-style: italic;font-size:15px;">nombre d'équipe: &nbsp;{{nombreequipe}}
+				</p>
+			</div>
+
+		</div>
+	{% endfor %}
+{% endblock %}

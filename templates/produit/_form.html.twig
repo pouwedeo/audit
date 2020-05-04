@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+     <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;" id="basic-addon1">Nom</span>
+  </div>
+       {{ form_widget(form.nom,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.nom) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;" id="basic-addon1">Aspect final</span>
+  </div>
+       {{ form_widget(form.aspectfinal,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.aspectfinal) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;">Caractéristique</span>
+  </div>
+       {{ form_widget(form.caracteristique,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.caracteristique) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;">Utilisation prévue</span>
+  </div>
+       {{ form_widget(form.utilisationprevue,{'attr': {'class':'form-control'}}) }}
+       {{ form_errors(form.utilisationprevue) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 167px;" id="basic-addon1">Duré de conservation</span>
+  </div>
+       {{ form_widget(form.dureconservation,{'attr': {'class':'form-control input-mask'}}) }}
+       {{ form_errors(form.dureconservation) }}
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;" id="inputGroupFile01">Image du produit</span>
+  </div>
+  <div class="custom-file">
+       {{ form_widget(form.imageproduit,{'attr':  {'placeholder': 'Select an article image'}}) }}
+       {{ form_errors(form.imageproduit) }}
+     <label class="custom-file-label" for="inputGroupFile01">Choisir un fichier</label>
+
+  </div>
+  </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 165px;">Emballage</span>
+  </div>
+  <div class="custom-file">
+       {{ form_widget(form.emballage,{'attr':  {'placeholder': 'Select an article image'}}) }}
+       {{ form_errors(form.emballage) }}
+      <label class="custom-file-label">Choisir un fichier</label>
+
+  </div>
+   </div>
+   <div class="col-md-4 col-xs-4 col-sm-4">
+       <button type="submit" class="btn btn-success">Enrégistrer</button>
+      <button type="reset" class="btn btn-danger">Annuler</button>
+    </div>
+{{ form_end(form) }}
